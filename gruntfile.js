@@ -17,7 +17,7 @@ module.exports = function(grunt) {
               expand: true,
               cwd: 'assets',
               src: ['**/*.svg'],
-              dest: 'svg',
+              dest: 'optimised',
             },
           ],
         },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                 return `var(--icon-override-${iconName}, ${replaceHash})`;
               }
               var path = filepath.split('/');
-              var iconName = path[path.length - 1].replace('.svg', '');
+              var iconName = path[path.length - 1].replace('.svg', '').replace(/\s/g, '-');
               var icon = src
                 .replace(/"/g, `'`)
                 .replace(`<svg`, `.icon-${iconName} { background-image: url("data:image/svg+xml, <svg`)
@@ -58,14 +58,14 @@ module.exports = function(grunt) {
               return icon;
             },
           },
-          src: 'svg/**/*.svg',
+          src: 'optimised/**/*.svg',
           dest: 'dist/svg-icons.css',
         },
         svgIconsHTML: {
           options: {
             process: function (src, filepath) {
               var path = filepath.split('/');
-              var iconName = path[path.length - 1].replace('.svg', '');
+              var iconName = path[path.length - 1].replace('.svg', '').replace(/\s/g, '-');
               const icon = `<li class="col-1-4 icon-with-text"><span class="icon icon-${iconName}"></span> .icon-${iconName}</li>`;
               return icon;
             },
