@@ -81,7 +81,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html-build');
   
     // icons
-    grunt.registerTask('dev:icons', ['svgmin:dist', 'concat:svgIcons', 'concat:svgIconsHTML', 'htmlbuild']);
+    grunt.registerTask('icons', ['svgmin:dist', 'concat:svgIcons', 'concat:svgIconsHTML', 'htmlbuild']);
   
   }; 
   
