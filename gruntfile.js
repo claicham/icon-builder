@@ -70,7 +70,7 @@ module.exports = function(grunt) {
               return icon;
             },
           },
-          src: 'svg/**/*.svg',
+          src: 'optimised/**/*.svg',
           dest: 'dist/icons.html',
         },
       },
